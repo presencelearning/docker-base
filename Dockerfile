@@ -1,4 +1,4 @@
-FROM fgaudin/consul
+FROM            ubuntu:14.04
 MAINTAINER      Sandy Lerman <sandy@presencelearning.com>
 
 

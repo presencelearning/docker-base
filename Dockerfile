@@ -5,9 +5,8 @@ MAINTAINER      Sandy Lerman <sandy@presencelearning.com>
 RUN apt-get update
 
 RUN \
-  apt-get install -y build-essential golang ruby-dev gcc wget supervisor unzip
-
-RUN gem install fpm
+  apt-get install -y build-essential golang ruby-dev gcc wget supervisor \
+  && gem install fpm
 
 RUN \
   wget https://github.com/elasticsearch/logstash-forwarder/archive/v0.3.1.tar.gz -O /tmp/logstash-forwarder.tar.gz \
@@ -15,14 +14,10 @@ RUN \
   && dpkg -i lumberjack_0.3.1_amd64.deb
 
 RUN \
-  wget https://dl.bintray.com/mitchellh/consul/0.5.0_linux_amd64.zip -O /tmp/consul.zip && \
-  unzip /tmp/consul.zip -d /usr/local/bin/
-
-RUN \
-  apt-get remove -y build-essential golang ruby-dev gcc wget unzip && \
-  apt-get autoremove -y && \
-  apt-get clean && rm -rf /var/lib/{apt,dpkg,cache,log,gems}/ && \
-  rm -rf /tmp/*
+  apt-get remove -y build-essential golang ruby-dev gcc wget \
+  && apt-get autoremove -y \
+  && apt-get clean && rm -rf /var/lib/{apt,dpkg,cache,log,gems}/ \
+  && rm -rf /tmp/*
 
 COPY config/logstash-forwarder.conf /etc/logstash-forwarder/
 

@@ -14,6 +14,11 @@ RUN \
   && dpkg -i lumberjack_0.3.1_amd64.deb
 
 RUN \
+  wget https://github.com/hashicorp/consul-template/releases/download/v0.7.0/consul-template_0.7.0_linux_amd64.tar.gz -O /tmp/consul_template.tar.gz && \
+  mkdir -p /opt/consul_template && tar xzf /tmp/consul_template.tar.gz -C /opt/consul_template --strip-components=1 && \
+  mkdir /opt/consul_template/conf.d && mkdir /opt/consul_template/templates
+
+RUN \
   apt-get remove -y build-essential golang ruby-dev gcc wget \
   && apt-get autoremove -y \
   && apt-get clean && rm -rf /var/lib/{apt,dpkg,cache,log,gems}/ \

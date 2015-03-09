@@ -2,9 +2,7 @@ FROM            ubuntu:14.04
 MAINTAINER      Sandy Lerman <sandy@presencelearning.com>
 
 
-RUN apt-get update
-
-RUN \
+RUN apt-get update && \
   apt-get install -y build-essential golang ruby-dev gcc wget supervisor && \
   gem install fpm && \
   wget https://github.com/elasticsearch/logstash-forwarder/archive/v0.3.1.tar.gz -O /tmp/logstash-forwarder.tar.gz && \

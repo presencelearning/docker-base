@@ -3,7 +3,7 @@ MAINTAINER      Sandy Lerman <sandy@presencelearning.com>
 
 
 RUN apt-get update && \
-  apt-get install -y build-essential golang gcc wget supervisor && \
+  apt-get install -y vim build-essential golang gcc wget supervisor && \
   wget https://github.com/elasticsearch/logstash-forwarder/archive/v0.4.0.tar.gz -O /tmp/logstash-forwarder.tar.gz && \
   cd /tmp && mkdir /tmp/logstash-forwarder && \
   tar xzf logstash-forwarder.tar.gz -C /tmp/logstash-forwarder --strip-components=1 && \

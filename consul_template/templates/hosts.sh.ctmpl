@@ -1,0 +1,2 @@
+{{range service "logstash-5043"}}/opt/etchosts.sh update {{.Node}}-{{.Port}}.logstash.local {{.Address}}
+{{end}}

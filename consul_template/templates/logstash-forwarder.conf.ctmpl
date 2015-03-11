@@ -1,13 +1,11 @@
 {
   "network": {
-    "servers": [ "logstash:5043" ],
+    "servers": [ {{range $i, $s := service "logstash-5043"}}{{if ne $i 0}}, {{end}}"{{$s.Node}}-{{$s.Port}}.logstash.local:{{$s.Port}}"{{end}} ],
 
     "ssl certificate": "/mnt/logstash-forwarder/logstash-forwarder.crt",
 
     "ssl ca": "/mnt/logstash-forwarder/logstash-forwarder.crt",
 
     "timeout": 15
-  },
-  "files": []
+  }
 }
-
